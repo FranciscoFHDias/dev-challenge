@@ -45,8 +45,8 @@ export default {
 
   User: {
 
-    products: async ({ id }, args, { models: { userModel } }) => {
-      const products = await userModel.find({ author: id }).exec()
+    products: async ({ author }, args, { models: { userModel } }) => {
+      const products = await userModel.find({ _id: author }).exec()
       return products
     }
   }
