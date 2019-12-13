@@ -3,7 +3,7 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 import { ApolloServer, AuthenticationError } from 'apollo-server-express'
-const { dbURI, secret, port} = require('./config/enviroment')
+import { dbURI, secret, port} from './config/enviroment'
 
 import schemas from './schemas'
 import resolvers from './resolvers'
@@ -12,8 +12,9 @@ import userModel from './models/User'
 import productModel from './models/Product'
 
 const app = express()
-mongoose.connect(dbURI, { useNewUrlParser: true })
 app.use(cors())
+mongoose.connect(dbURI, { useNewUrlParser: true })
+
 
 const getUser = async (req) => {
   const token = req.headers['token']

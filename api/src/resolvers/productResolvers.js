@@ -14,7 +14,7 @@ export default {
 
     products: async (parent, args, { models: { productModel }, me}) => {
       if(!me) {
-        throw new AuthenticationError('You are nor loged-in')
+        throw new AuthenticationError('You are not loged-in')
       }
       const products = await productModel.find({ user: me.id }).exec()
       return products

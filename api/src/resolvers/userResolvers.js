@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { AuthenticationError } from 'apollo-server'
+import { secret } from '../config/enviroment'
 
 export default {
 
@@ -14,8 +15,8 @@ export default {
       return user
     },
 
-    login: async (parent, { name, password }, { models: { userModel } }) => {
-      const user = await userModel.findOne({ name }).exec()
+    login: async (parent, { username, password }, { models: { userModel } }) => {
+      const user = await userModel.findOne({ username }).exec()
 
       if (!user) {
         throw new AuthenticationError('Invalid credentials')
@@ -27,7 +28,7 @@ export default {
         throw new AuthenticationError('Invalid credentials')
       }
 
-      const token = jwt.sign({ id: user.id }, 'riddlemethis', { expiresIn: 24 * 10 * 50 })
+      const token = jwt.sign({ id: user.id }, secret, { expiresIn: 24 * 10 * 50 })
 
       return {
         token
@@ -45,8 +46,8 @@ export default {
 
   User: {
 
-    products: async ({ author }, args, { models: { userModel } }) => {
-      const products = await userModel.find({ _id: author }).exec()
+    products: async ({ id }, args, { models: { productModel } }) => {
+      const products = await productModel.find({ user: id }).exec()
       return products
     }
   }

@@ -27,6 +27,9 @@
     "prefer-const": "error",
     "quotes": [ "error", "single" ],
     "semi": [ "error", "never" ],
-    "react/prop-types": [ 0 ]
-  }
+    "react/prop-types": [ 0 ],
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1
+  },
+  "plugins": ["react", "import", "jsx-a11y", "act-hooks"]
 }
