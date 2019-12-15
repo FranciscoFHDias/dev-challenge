@@ -22,7 +22,10 @@ module.exports = {
     hot: true,
     open: true,
     port: 8000,
-    watchContentBase: true
+    watchContentBase: true,
+    proxy: {
+      '/api': 'http://localhost:4000'
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

@@ -12,7 +12,9 @@ const LogOut = () => {
   return (
     <div className="form-group col-md-6">
       <Link to='/'>
-        <button className="btn btn-light" onClick={logout}>Logout</button>
+        <button className="btn btn-light" onClick={logout}>
+          Logout
+        </button>
       </Link>
     </div>
   )

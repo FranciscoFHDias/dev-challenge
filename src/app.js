@@ -7,6 +7,7 @@ import client from './client'
 import Login from './components/pages/Login'
 import Products from './components/products/Index'
 import NewProduct from './components/products/New'
+import NewUser from './components/pages/NewUser'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles.scss'
@@ -16,6 +17,7 @@ class App extends React.Component {
     return(
       <HashRouter>
         <Switch>
+          <Route path="/newUser" component={NewUser} />
           <Route path="/newProduct" component={NewProduct} />
           <Route path="/products" component={Products} />
           <Route path="/" component={Login} />

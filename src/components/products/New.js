@@ -15,7 +15,6 @@ const New = () => {
   const [createProduct, { loading, data, error }] = useMutation(NEW_PRODUCT, { variables: values, refetchQueries: [{ query: ALLPRODUCTS }] })
 
   if (loading) return 'Loading'
-  if (error) return `Error ${error.message}`
   if (data) {
     return <Redirect to='/products'/>
   }
@@ -61,6 +60,7 @@ const New = () => {
                   type="text"
                   placeholder="Product supplier" />
                 </label>
+                {error && <p>{`Error ${error.message}`}</p>}
               </div>
               <div className="form-group col-md-6">
                 <button className="btn btn-light" onClick={handleSubmit}>
@@ -68,10 +68,8 @@ const New = () => {
                 </button>
               </div>
               <div className="form-group col-md-6">
-                <Link to="/products">
-                  <button className="btn btn-light" >
+                <Link className="btn btn-light" to="/products">
                     All products
-                  </button>
                 </Link>
               </div>
             </form>

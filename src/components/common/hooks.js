@@ -10,6 +10,7 @@ const useForm = (callback, data) => {
       [event.target.name]: event.target.value,
       [event.target.name]: event.target.type === 'number' ? parseInt(event.target.value) : event.target.value
     }))
+    console.log(values)
   }
 
   const handleSubmit = (event, onSubmit) => {

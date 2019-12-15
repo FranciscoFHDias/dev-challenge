@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useMutation } from 'react'
 import Select from 'react-select'
-import { ALLPRODUCTS } from '../common/queries'
+import { ALLPRODUCTS, DELETE_PRODUCT } from '../common/queries'
 import { useQuery } from'@apollo/react-hooks'
 import LogOut from '../common/LogOut'
 import Line from '../common/Line'
@@ -65,10 +65,8 @@ const Index = () => {
           </div>
           <LogOut />
           <div className="form-group col-md-6">
-            <Link to="/newProduct">
-              <button className="btn btn-light">
-                New Product
-              </button>
+            <Link className="btn btn-light" to="/newProduct">
+              New Product
             </Link>
           </div>
         </div>

@@ -1,33 +1,42 @@
 import React from 'react'
-import { useLazyQuery } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import { useForm } from '../common/hooks'
-import { LOGIN } from '../common/queries'
+import { NEW_USER } from '../common/queries'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
- 
-const Login = () => {
 
-
-  const { values, handleChange, handleSubmit } = useForm((credentials) => loginUser(), {
+const NewUser = () => {
+  const { values, handleChange, handleSubmit } = useForm((credentials) => createUser(), {
     username: '',
+    email:'',
     password: ''
   })
 
-  const [loginUser, { called, loading, data, error }] = useLazyQuery(LOGIN, { variables: values })
+  const [createUser, { loading, data, error }] = useMutation(NEW_USER, { variables: values })
   
-  if (called && loading) return 'Loading'
-
+  if (loading) return 'Loading'
   if (data) {
-    localStorage.setItem('token', data.login.token)
-    return <Redirect to='/products'/>
+    return <Redirect to='/'/>
   }
 
   return (
     <div className="container-fluid">
         <div className="row">
           <div className="col-sm-12 col-md-12 main">
-            <h1 className="page-header">Welcome</h1>
+            <h1 className="page-header">New User</h1>
             <form className="row">
+              <div className="form-group col-md-6">
+                <label htmlFor="email">
+                  Email
+                  <input 
+                  className="form-control" 
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Your email" />
+                </label>
+              </div>
               <div className="form-group col-md-6">
                 <label htmlFor="username">
                   Username
@@ -55,12 +64,12 @@ const Login = () => {
               </div>
               <div className="form-group col-md-6">
                 <div className="btn btn-light" onClick={handleSubmit}>
-                  login
+                Create an account
                 </div>
               </div>
               <div className="form-group col-md-6">
-                <Link className="btn btn-light" to='/newUser'>
-                    need to create an account?
+                <Link className="btn btn-light" to='/'>
+                Login
                 </Link>
               </div>
             </form>
@@ -71,5 +80,4 @@ const Login = () => {
   
 }
 
-export default Login
-
+export default NewUser

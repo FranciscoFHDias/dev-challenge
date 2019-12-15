@@ -38,9 +38,28 @@ mutation newProduct($name: String!, $price: Int!, $supplier: String!) {
 }
 `
 
+const NEW_USER = gql`
+mutation newUser($email: String!, $username: String!, $password: String!) {
+    createUser(email: $email, username: $username, password: $password) {
+        id
+        username
+    }
+}
+`
+
+const DELETE_PRODUCT = gql`
+mutation deleteProduct($id: ID!){
+  deleteProduct(id:$id){
+    id
+  }
+}
+`
+
 export {
   LOGIN,
   ALLPRODUCTS,
   GET_CURRENT_USER,
-  NEW_PRODUCT
+  NEW_PRODUCT,
+  NEW_USER,
+  DELETE_PRODUCT
 }

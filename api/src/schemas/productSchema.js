@@ -11,11 +11,11 @@ export default gql`
   }
 
   extend type Query {
-    product(id: ID!): Product!
     products: [Product!]!
   }
 
   extend type Mutation {
     createProduct(name: String!, supplier: String!, price: Int!): Product!
+    deleteProduct(id: ID!): Product
   }
 `

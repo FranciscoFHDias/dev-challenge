@@ -4,7 +4,7 @@
   "description": "JDLT developer technical challenge",
   "main": "index.html",
   "scripts": {
-    "test": "jest api/tests",
+    "test": "jest",
     "serve:frontend": "webpack-dev-server --mode development",
     "build": "webpack -p",
     "start": "node index",
@@ -61,11 +61,13 @@
     "webpack-dev-server": "^3.9.0"
   },
   "devDependencies": {
+    "axios": "^0.19.0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-polyfill": "^6.26.0",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "graphql-tester": "^0.0.5",
     "jest": "^24.9.0"
   }
 }

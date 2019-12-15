@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Line = ({ ...product }) => {
+
   return(
     <tr>
       <td>{product.id}</td>
