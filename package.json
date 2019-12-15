@@ -8,7 +8,7 @@
     "serve:frontend": "webpack-dev-server --mode development",
     "build": "webpack -p",
     "start": "node index",
-    "seed": "babel-node api/src/db/seed.js",
+    "seed": "node api/src/db/seed.js",
     "serve:backend": "nodemon --exec babel-node api/src/index.js"
   },
   "repository": {
@@ -28,7 +28,6 @@
     "@babel/node": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "apollo-boost": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-context": "^1.0.19",
@@ -46,6 +45,7 @@
     "graphql-tag": "^2.10.1",
     "html-webpack-plugin": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
     "mongoose": "^5.8.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
@@ -53,6 +53,7 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
+    "react-select": "^3.0.8",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.1",
     "webpack": "^4.41.2",

@@ -1,9 +1,10 @@
-import mongoose from 'mongoose'
-import Product from '../models/Product'
-import User from '../models/User'
-import productData from './data/productData'
-import userData from './data/userData'
-import { dbURI } from '../config/enviroment'
+const mongoose = require('mongoose')
+const Product = require('../models/Product') 
+const User = require('../models/User')
+const productData = require('./data/productData')
+const userData = require('./data/userData')
+const { dbURI } = require('../config/enviroment')
+mongoose.Promise = require('bluebird')
 
 mongoose.connect(dbURI, { useNewUrlParser: true })
   .then(() => mongoose.connection.db.dropDatabase())

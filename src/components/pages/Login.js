@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLazyQuery } from '@apollo/react-hooks'
-import { useForm } from '../lib/hooks'
-import { LOGIN } from '../lib/queries'
+import { useForm } from '../common/hooks'
+import { LOGIN } from '../common/queries'
 import { Redirect } from 'react-router'
 
 const Login = () => {
@@ -26,11 +26,10 @@ const Login = () => {
             <h1 className="page-header">Welcome</h1>
             <form className="row">
               <div className="form-group col-md-6">
-                <label htmlFor="selSupplier">
+                <label htmlFor="username">
                   Username
                   <input 
                   className="form-control" 
-                  id="selSupplier"
                   name="username"
                   value={values.username}
                   onChange={handleChange}
@@ -39,11 +38,10 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-group col-md-6">
-                <label htmlFor="selProduct">
+                <label htmlFor="password">
                   Password
                   <input 
                   className="form-control" 
-                  id="selProduct"
                   value={values.password}
                   name="password"
                   onChange={handleChange}

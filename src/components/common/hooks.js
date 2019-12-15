@@ -7,16 +7,16 @@ const useForm = (callback, data) => {
     event.persist()
     setValues(values => ({
       ...values,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.type === 'number' ? parseInt(event.target.value) : event.target.value
     }))
   }
 
   const handleSubmit = (event, onSubmit) => {
-    console.log(values)
     event.preventDefault()
     callback(values)
   }
-
+  
   return {
     handleChange,
     handleSubmit,

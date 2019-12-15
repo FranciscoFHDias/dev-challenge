@@ -14,7 +14,7 @@ export default gql`
   }
 
   extend type Query {
-    user(id: ID!): User!
+    user: User!
     login(username: String!, password: String!): Token
   }
 

@@ -7,11 +7,11 @@ export default {
 
   Query: {
 
-    user: async (parent, { id }, { models: { userModel }, me }) => {
+    user: async (parent, id, { models: { userModel }, me }) => {
       if (!me) {
         throw new AuthenticationError('You are not loged-in')
       }
-      const user = await userModel.findById({ _id: id }).exec()
+      const user = await userModel.findById({ _id: me.id }).exec()
       return user
     },
 
