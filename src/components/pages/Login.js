@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
  
 const Login = () => {
 
+  if (localStorage.getItem('token')){
+    localStorage.clear()
+  }
 
   const { values, handleChange, handleSubmit } = useForm((credentials) => loginUser(), {
     username: '',
@@ -54,9 +57,9 @@ const Login = () => {
                 {error && <p>{`Error ${error.message}`}</p>}
               </div>
               <div className="form-group col-md-6">
-                <div className="btn btn-light" onClick={handleSubmit}>
+                <button className="btn btn-light" onClick={handleSubmit}>
                   login
-                </div>
+                </button>
               </div>
               <div className="form-group col-md-6">
                 <Link className="btn btn-light" to='/newUser'>
